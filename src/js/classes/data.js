@@ -602,6 +602,13 @@ export const data = {
     data.saveFileDialog($('#save-file'), type, data.getSaveData(type));
   },
 
+  trySaveHTopia: function() {
+    if(window.YarnToHtopia)
+      window.YarnToHtopia(data.getSaveData('json'));
+    else
+      throw new Error('Could not find HTopia callback.');
+  },
+
   trySaveCurrent: function() {
     if (data.lastStorageHost() === 'GIST') {
       const gists = app.gists;
